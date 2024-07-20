@@ -1,0 +1,49 @@
+<div class="row justify-content-center my-5">
+    <div class="col-4">
+      <div class="row">
+        <div class="col mb-2">
+          <label for="email" class="form-label">Email:</label>
+          <input type="email" id="email" name="email" #email="ngModel" [ngModel]="user.email" disabled class="form-control form-control-sm">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col mb-2">
+          <label for="name" class="form-label">Name:</label>
+          <input type="text" id="name" name="name" #name="ngModel" [(ngModel)]="user.name" class="form-control form-control-sm">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col d-grid">
+          <button type="button" (click)="update()" class="btn btn-sm btn-dark">
+            Update
+          </button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col d-grid">
+          Role : <b>{{user.role}}</b>
+        </div>
+      </div>
+
+      <div class="row" *isAuthorize="['Student']">
+        <div class="col d-grid">
+          Content for students
+        </div>
+      </div>
+
+
+      <div class="row" *isAuthorize="['Teacher']">
+        <div class="col d-grid">
+          Content for teachers
+        </div>
+      </div>
+
+
+      <div class="row" *isAuthorize="['Student','Teacher']">
+        <div class="col d-grid">
+          Content for students/teachers
+        </div>
+      </div>
+
+    </div>
+  </div>
